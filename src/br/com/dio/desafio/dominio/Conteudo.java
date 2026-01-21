@@ -26,5 +26,6 @@ public abstract class Conteudo {
     }
 
 
-
+    public void setTituto(String mentoriaDeJava) {
+    }
 }

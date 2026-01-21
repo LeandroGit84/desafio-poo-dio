@@ -17,12 +17,17 @@ public class Dev {
     };
 
     public void progredir() {
-        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-        if (conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
+        Optional<Conteudo> conteudoFirst = this.conteudosInscritos.stream().findFirst();
+
+        if (conteudoFirst.isPresent()) {
+            this.conteudosConcluidos.add(conteudoFirst.get());
+            this.conteudosInscritos.remove(conteudoFirst.get());
         } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!!");
+            System.err.printf(
+                    "[ERRO] Dev %s não possui conteúdos inscritos.%n",
+                    this.getNome()
+            );
+
         }
     }
 
@@ -59,6 +64,7 @@ public class Dev {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dev dev = (Dev) o;
         return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);

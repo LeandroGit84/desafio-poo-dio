@@ -1,10 +1,12 @@
 package br.com.dio.desafio.dominio;
 
+import java.util.*;
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
+
 
 public class Bootcamp {
     private  String nome;
@@ -57,9 +59,15 @@ public class Bootcamp {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devsInscritos, bootcamp.devsInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        return Objects.equals(nome, bootcamp.nome) &&
+                Objects.equals(descricao, bootcamp.descricao) &&
+                Objects.equals(dataInicial, bootcamp.dataInicial) &&
+                Objects.equals(dataFinal, bootcamp.dataFinal) &&
+                Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
+                Objects.equals(conteudos, bootcamp.conteudos);
     }
 
     @Override
